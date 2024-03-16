@@ -10,7 +10,7 @@ export default function Sidebar() {
   const location = useLocation();
 
   return (
-    <div>
+    <>
       {hovered ? (
         <div
           className="bg-blue-500 flex flex-col w-fit h-screen text-white pt-5 gap-2 p-4"
@@ -68,6 +68,6 @@ export default function Sidebar() {
           </Link>
         </div>
       )}
-    </div>
+    </>
   );
 }
