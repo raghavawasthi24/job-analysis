@@ -9,6 +9,11 @@ import {
 import { IoMdSearch } from "react-icons/io";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
+import { PiGraduationCap } from "react-icons/pi";
+import { MdOutlineSell } from "react-icons/md";
+import { FaBuildingColumns } from "react-icons/fa6";
+import { MdAttachMoney } from "react-icons/md";
+import { GrCloudSoftware } from "react-icons/gr";
 
 export default function Categories() {
   const sectors = [
@@ -18,23 +23,23 @@ export default function Categories() {
     },
     {
       name: "Education",
-      icon: MdHealthAndSafety,
+      icon: PiGraduationCap,
     },
     {
       name: "Manufacturing",
-      icon: MdHealthAndSafety,
+      icon: FaBuildingColumns,
     },
     {
       name: "Sales",
-      icon: MdHealthAndSafety,
+      icon: MdOutlineSell,
     },
     {
       name: "Finance",
-      icon: MdHealthAndSafety,
+      icon: MdAttachMoney,
     },
     {
       name: "Technology",
-      icon: MdHealthAndSafety,
+      icon: GrCloudSoftware,
     },
   ];
 
@@ -49,14 +54,14 @@ export default function Categories() {
       <div className="flex items-center gap-6">
         {sectors.map((sector, key) => (
           <div className="flex flex-col items-center" key={key}>
-            <MdHealthAndSafety className="w-12 h-12 border p-2 rounded-full" />
+            <sector.icon className="w-10 h-10 border p-2 rounded-full" />
             <p className="text-gray-600">{sector.name}</p>
           </div>
         ))}
         <Dialog>
           <DialogTrigger asChild>
             <div className="flex flex-col items-center">
-              <IoMdSearch className="w-12 h-12 border p-2 rounded-full" />
+              <IoMdSearch className="w-10 h-10 border p-2 rounded-full" />
               <p className="text-gray-600">Search More</p>
             </div>
           </DialogTrigger>

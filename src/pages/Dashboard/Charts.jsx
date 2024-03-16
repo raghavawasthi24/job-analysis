@@ -68,44 +68,42 @@ export default function Charts() {
   }, [Data, chartData]); // Add Data and chartData as dependencies to useEffect
 
   return (
-    <div className="flex gap-4 mt-5">
+    <div className="flex flex-col gap-4 mt-5">
       <div className="w-full bg-white rounded-lg px-4 py-6">
         <p className="font-medium">Graph 1</p>
-        <div>
-          {chartData && (
-            <Line
-              data={chartData}
-              options={{
-                plugins: {
-                  legend: {
+        {chartData && (
+          <Line
+            data={chartData}
+            options={{
+              plugins: {
+                legend: {
+                  display: false,
+                },
+                title: {
+                  display: true,
+                  text: "",
+                  font: {
+                    size: 16,
+                  },
+                },
+              },
+              scales: {
+                x: {
+                  grid: {
                     display: false,
                   },
-                  title: {
-                    display: true,
-                    text: "",
-                    font: {
-                      size: 16,
-                    },
+                },
+                y: {
+                  grid: {
+                    display: false,
                   },
                 },
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    grid: {
-                      display: false,
-                    },
-                  },
-                },
-              }}
-            />
-          )}
-        </div>
+              },
+            }}
+          />
+        )}
       </div>
-      <div className="grid gap-4">
+      <div className="flex flex-1 gap-4">
         <div className=" bg-white rounded-lg px-4 py-6">
           <p className="font-medium">Graph 2</p>
           {chartData && (
