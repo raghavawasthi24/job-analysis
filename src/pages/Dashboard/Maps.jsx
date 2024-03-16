@@ -29,7 +29,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Almora",
           Dist_Code: "064",
-          EmployerRate: "10",
+          EmployerRate: "18",
         },
         geometry: {
           type: "Polygon",

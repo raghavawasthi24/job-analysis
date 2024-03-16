@@ -15,7 +15,7 @@ import { FaBuildingColumns } from "react-icons/fa6";
 import { MdAttachMoney } from "react-icons/md";
 import { GrCloudSoftware } from "react-icons/gr";
 
-export default function Categories() {
+export default function Categories({setCtg}) {
   const sectors = [
     {
       name: "Healthcare",
@@ -46,14 +46,14 @@ export default function Categories() {
   const [search, setSearch] = useState("");
 
   const submitHandler = () => {
-    console.log(search);
+    setCtg(search);
   };
   return (
     <div className="flex flex-col gap-4">
       <p className="font-medium">Explore the jobs</p>
       <div className="flex items-center gap-6">
         {sectors.map((sector, key) => (
-          <div className="flex flex-col items-center" key={key}>
+          <div className="flex flex-col items-center" key={key} onClick={()=>setCtg(sector.name)}>
             <sector.icon className="w-10 h-10 border p-2 rounded-full" />
             <p className="text-gray-600">{sector.name}</p>
           </div>
