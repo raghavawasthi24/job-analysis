@@ -2,7 +2,7 @@ import React from 'react';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const UttarakhandChoroplethMap = () => {
+const Maps = () => {
     // Sample GeoJSON data for Uttarakhand (coordinates are not accurate)
     const uttarakhandGeoJSON = {
         type: 'FeatureCollection',
@@ -82,4 +82,4 @@ const UttarakhandChoroplethMap = () => {
     );
 };
 
-export default UttarakhandChoroplethMap;
+export default Maps;

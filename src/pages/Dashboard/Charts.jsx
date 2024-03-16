@@ -2,6 +2,7 @@ import Chart from "chart.js/auto";
 import { CategoryScale, LinearScale } from "chart.js";
 import { useState, useEffect } from "react";
 import { Pie, Line, Doughnut } from "react-chartjs-2";
+import Maps from "./Maps";
 
 Chart.register(CategoryScale, LinearScale);
 
@@ -69,42 +70,49 @@ export default function Charts() {
 
   return (
     <div className="flex gap-4 mt-5">
-      <div className="w-full bg-red-400 rounded-lg px-4 py-6">
-        <p>Graph 1</p>
-        {chartData && (
-          <Line
-            data={chartData}
-            options={{
-              plugins: {
-                legend: {
-                  display: false,
-                },
-                title: {
-                  display: true,
-                  text: "",
-                  font: {
-                    size: 16,
+      <div>
+        <div className="w-full bg-white rounded-lg px-4 py-6">
+          <p className="font-medium">Graph 1</p>
+        
+            {chartData && (
+              <Line
+                data={chartData}
+                options={{
+                  plugins: {
+                    legend: {
+                      display: false,
+                    },
+                    title: {
+                      display: true,
+                      text: "",
+                      font: {
+                        size: 16,
+                      },
+                    },
                   },
-                },
-              },
-              scales: {
-                x: {
-                  grid: {
-                    display: false,
+                  scales: {
+                    x: {
+                      grid: {
+                        display: false,
+                      },
+                    },
+                    y: {
+                      grid: {
+                        display: false,
+                      },
+                    },
                   },
-                },
-                y: {
-                  grid: {
-                    display: false,
-                  },
-                },
-              },
-            }}
-          />
-        )}
+                }}
+              />
+            )}
+        
+        
+        </div>
+        
       </div>
-      <div className="grid">
-        <div className=" bg-red-400 rounded-lg px-4 py-6">
+      <div className="grid gap-4">
+        <div className=" bg-white rounded-lg px-4 py-6">
+          <p className="font-medium">Graph 2</p>
           {chartData && (
             <Doughnut
               data={chartData}
@@ -125,7 +133,8 @@ export default function Charts() {
             />
           )}
         </div>
-        <div className=" bg-red-400 rounded-lg px-4 py-6">
+        <div className=" bg-white rounded-lg px-4 py-6">
+          <p className="font-medium">Graph 3</p>
           {chartData && (
             <Doughnut
               data={chartData}
