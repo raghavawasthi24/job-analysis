@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css"
 import Dashboard from "./pages/Dashboard/dashboard";
-import Sidebar from "./components/Sidebar";
+import Maps from "./pages/Dashboard/Maps";
 
 export default function App() {
   return (
@@ -10,6 +10,7 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Dashboard/>} />
+              <Route path="Maps" element={<Maps/>} /> 
             </Routes>
           </BrowserRouter>
        
