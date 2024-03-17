@@ -12,11 +12,10 @@ export default function Footer() {
     <footer className="flex flex-col p-10 gap-5 border-t text-gray-600 body-font">
       <div className="flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="flex-shrink-0 md:mx-0 md:text-left md:mt-0 mt-10">
-          <p className="text-2xl font-bold">UniCraft</p>
+          <p className="text-2xl font-bold">JobInside</p>
 
           <p className="w-auto md:w-[350px]">
-            Design amazing digital experiences that create more happy in the
-            world.
+            Join Us in Shaping the Future of Work in Uttarakhand
           </p>
         </div>
       </div>

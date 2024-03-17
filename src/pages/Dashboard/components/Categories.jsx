@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdHealthAndSafety } from "react-icons/md";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTrigger,
@@ -16,7 +17,7 @@ import { MdAttachMoney } from "react-icons/md";
 import { GrCloudSoftware } from "react-icons/gr";
 import { MdClearAll } from "react-icons/md";
 
-export default function Categories({ setCtg }) {
+export default function Categories({ setCtg, ctg }) {
   const sectors = [
     {
       name: "All",
@@ -63,7 +64,13 @@ export default function Categories({ setCtg }) {
             key={key}
             onClick={() => setCtg(sector.name)}
           >
-            <sector.icon className="w-10 h-10 border border-blue-300 p-2 rounded-full text-blue-500" />
+            <sector.icon
+              className={
+                ctg == sector.name
+                  ? "w-10 h-10 border border-blue-300 p-2 rounded-full bg-blue-500 text-white"
+                  : "w-10 h-10 border border-blue-300 p-2 rounded-full text-blue-500"
+              }
+            />
             <p className="text-gray-600 text-sm">{sector.name}</p>
           </div>
         ))}
@@ -79,7 +86,9 @@ export default function Categories({ setCtg }) {
               <p className="font-medium">Enter to search</p>
             </DialogHeader>
             <Input type="search" onChange={(e) => setSearch(e.target.value)} />
-            <Button onClick={submitHandler}>Search</Button>
+            <DialogClose>
+              <Button onClick={submitHandler}>Search</Button>
+            </DialogClose>
           </DialogContent>
         </Dialog>
       </div>

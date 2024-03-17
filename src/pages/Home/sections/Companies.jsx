@@ -14,11 +14,12 @@ export default function Companies() {
     <section className="flex justify-center">
       <div className="">
         <h1 className="text-center my-4 text-gray-400">
-          Trusted By 250+ Companies
+          An extensive dataset encompassing information from over 250+
+          companies.
         </h1>
 
         <div className="flex px-2  lg:w-full flex-wrap items-center justify-center gap-3">
-            {/* mapping all companies */}
+          {/* mapping all companies */}
           {companies.map((company, index) => (
             <img src={company} alt="" className="w-[150px]" key={index} />
           ))}

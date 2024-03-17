@@ -9,20 +9,34 @@ import axios from "axios";
 import { Button } from "../../components/ui/button";
 
 export default function Dashboard() {
-  const [ctg, setCtg] = useState("");
+  const [ctg, setCtg] = useState("All");
   const [data, setData] = useState(null);
   useEffect(() => {
-    console.log(ctg);
-    axios
-      .post("https://dqct2msz-8000.inc1.devtunnels.ms/classify/suggest", {
-        sector: ctg,
-      })
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if(ctg=="All"){
+       axios
+         .post("https://dqct2msz-8000.inc1.devtunnels.ms/classify/suggest", {
+           sector: "",
+         })
+         .then((res) => {
+           setData(res.data);
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+    }
+    else{
+      axios
+        .post("https://dqct2msz-8000.inc1.devtunnels.ms/classify/suggest", {
+          sector: ctg,
+        })
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+   
   }, [ctg]);
 
   const roles = data?.role_count && Object.keys(data.role_count);
@@ -31,7 +45,7 @@ export default function Dashboard() {
     <div className="flex">
       <Sidebar />
       <div className="flex-1 flex-col h-screen overflow-auto p-6 bg-gray-50">
-        <Categories setCtg={setCtg} />
+        <Categories setCtg={setCtg} ctg={ctg}/>
         <div className="flex gap-4 mt-5 w-full overflow-auto">
           {ctg ? roles?.map((role, key) => <Button>{role}</Button>) : null}
         </div>
