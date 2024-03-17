@@ -19,7 +19,6 @@ export default function Dashboard() {
     axios.get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
       .then((res) => {
         setJobData(res.data);
-        console.log(res.data);
         // setLoading(false);
       })
       .catch((err) => {
@@ -30,7 +29,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Filter data based on sector
-    const filtered = jobdata.filter(job => job.sector === ctg);
+    const filtered = jobdata.filter(job => job.sector === ctg || ctg === "");
     setFilteredData(filtered);
   }, [data]);
 

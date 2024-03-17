@@ -8,6 +8,8 @@ export default function Jobs({data}) {
   // if (loading) {
   //   return <div>Loading...</div>;
   // }
+    console.log(data)
+
 
   return (
     <div className="bg-white mt-5 rounded-lg p-2 gap-4 h-[58rem] overflow-auto">
