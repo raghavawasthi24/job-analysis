@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { ImPriceTags } from "react-icons/im";
+import { TiHomeOutline } from "react-icons/ti";
+
 
 export default function Sidebar() {
   const [hovered, setHovered] = useState(true);
@@ -22,6 +24,20 @@ export default function Sidebar() {
               size={hovered ? "default" : "icon"}
               className={`${hovered && "justify-start w-full"} ${
                 location.pathname === "/" && "bg-blue-100 text-black border-l-2"
+              }`}
+            >
+              <TiHomeOutline
+                className={`${hovered && "mr-2"} h-5 w-5`}
+              />
+              {hovered && "Home"}
+            </Button>
+          </Link>
+          <Link to="/">
+            <Button
+              variant="ghost"
+              size={hovered ? "default" : "icon"}
+              className={`${hovered && "justify-start w-full"} ${
+                location.pathname === "/dashboard" && "bg-blue-100 text-black border-l-2"
               }`}
             >
               <MdDashboardCustomize

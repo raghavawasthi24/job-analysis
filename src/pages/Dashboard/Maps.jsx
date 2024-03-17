@@ -6,19 +6,6 @@ const Maps = () => {
   // Sample GeoJSON data for Uttarakhand (coordinates are not accurate)
   const uttarakhandGeoJSON = {
     type: "FeatureCollection",
-    // features: [
-    //     {
-    //         type: 'Feature',
-    //         properties: {
-    //             name: 'Uttarakhand',
-    //             density: 200, // Example data (can be replaced with actual data)
-    //         },
-    //         geometry: {
-    //             type: 'Polygon',
-    //             coordinates: [[[78.0322, 30.0668], [79.2006, 30.0668], [79.2006, 31.4475], [78.0322, 31.4475], [78.0322, 30.0668]]], // Example coordinates
-    //         },
-    //     },
-    // ],
     features: [
       {
         type: "Feature",
@@ -8694,29 +8681,31 @@ const Maps = () => {
   };
 
   return (
-    <MapContainer
-      center={[30.0668, 79.0193]} // Centered around a point in Uttarakhand
-      zoom={7}
-      style={{
-        height: "25rem",
-        width: "100%",
-        backgroundColor: "white",
-      }}
-      zoomControl={false}
-      dragging={false}
-      scrollWheelZoom={false}
-    >
-      <GeoJSON
-        data={uttarakhandGeoJSON}
-        style={style}
-        onEachFeature={(feature, layer) => {
-          layer.bindPopup(
-            `District Name:${feature.properties.Dist_Name}
-             Unemployed: ${feature.properties.EmployerRate}`
-          );
+    <>
+      <MapContainer
+        center={[30.0668, 79.0193]} // Centered around a point in Uttarakhand
+        zoom={7}
+        style={{
+          height: "25rem",
+          width: "100%",
+          backgroundColor: "white",
         }}
-      />
-    </MapContainer>
+        zoomControl={false}
+        dragging={false}
+        scrollWheelZoom={false}
+      >
+        <GeoJSON
+          data={uttarakhandGeoJSON}
+          style={style}
+          onEachFeature={(feature, layer) => {
+            layer.bindPopup(
+              `District Name:${feature.properties.Dist_Name}
+             Unemployed: ${feature.properties.EmployerRate}`
+            );
+          }}
+        />
+      </MapContainer>
+    </>
   );
 };
 

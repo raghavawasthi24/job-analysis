@@ -25,3 +25,8 @@ code {
 .hero{
   background-image: url("./assests/BG.png");
 }
+
+
+.damm::-webkit-scrollbar {
+    display: none;
+}

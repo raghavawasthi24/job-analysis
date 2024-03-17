@@ -12,11 +12,12 @@ export default function Dashboard() {
   const [ctg, setCtg] = useState("All");
   const [data, setData] = useState(null);
   const [jobdata, setJobData] = useState([]);
-  const [filteredData, setFilteredData] = useState([])
+  const [filteredData, setFilteredData] = useState([]);
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
+    axios
+      .get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
       .then((res) => {
         setJobData(res.data);
         // setLoading(false);
@@ -29,24 +30,23 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Filter data based on sector
-    const filtered = jobdata.filter(job => job.sector === ctg || ctg === "");
+    const filtered = jobdata.filter((job) => job.sector === ctg || ctg === "");
     setFilteredData(filtered);
   }, [data]);
 
   useEffect(() => {
-    if(ctg=="All"){
-       axios
-         .post("https://dqct2msz-8000.inc1.devtunnels.ms/classify/suggest", {
-           sector: "",
-         })
-         .then((res) => {
-           setData(res.data);
-         })
-         .catch((err) => {
-           console.log(err);
-         });
-    }
-    else{
+    if (ctg == "All") {
+      axios
+        .post("https://dqct2msz-8000.inc1.devtunnels.ms/classify/suggest", {
+          sector: "",
+        })
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
       axios
         .post("https://dqct2msz-8000.inc1.devtunnels.ms/classify/suggest", {
           sector: ctg,
@@ -58,9 +58,7 @@ export default function Dashboard() {
           console.log(err);
         });
     }
-   
   }, [ctg]);
-  
 
   const roles = data?.role_count && Object.keys(data.role_count);
 
@@ -68,8 +66,8 @@ export default function Dashboard() {
     <div className="flex">
       <Sidebar />
       <div className="flex-1 flex-col h-screen overflow-auto p-6 bg-gray-50">
-        <Categories setCtg={setCtg} ctg={ctg}/>
-        <div className="flex gap-4 mt-5 w-full overflow-auto">
+        <Categories setCtg={setCtg} ctg={ctg} />
+        <div className="flex gap-4 mt-5 w-full overflow-auto damm">
           {ctg ? roles?.map((role, key) => <Button>{role}</Button>) : null}
         </div>
         <div className="flex gap-4">
