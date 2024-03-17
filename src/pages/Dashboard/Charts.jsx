@@ -5,10 +5,12 @@ import { Pie, Line, Doughnut } from "react-chartjs-2";
 
 Chart.register(CategoryScale, LinearScale);
 
-export default function Charts({ data }) {
+export default function Charts({ data, role }) {
   const [roleData, setRoleData] = useState(null);
   const [skillData, setSkillData] = useState(null);
   const [sortRoles, setSortRoles] = useState(null);
+
+
 
   useEffect(() => {
     if (data) {
@@ -178,4 +180,5 @@ export default function Charts({ data }) {
       </div>
     </div>
   );
-}
+            }
+  

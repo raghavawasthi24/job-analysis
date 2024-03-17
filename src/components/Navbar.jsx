@@ -19,7 +19,7 @@ export default function Header() {
             JobInsight
           </a>
         </div>
-        <ul
+        {/* <ul
           className={` ${
             state ? "block" : "hidden"
           } items-center justify-center gap-6 md:flex`}
@@ -33,7 +33,7 @@ export default function Header() {
           <li className="pt-1.5 font-dm text-sm font-medium text-slate-700">
             <a href="#">FAQ</a>
           </li>
-        </ul>
+        </ul> */}
         <div className="hidden items-center justify-center gap-6 md:flex">
           <a
             href=""
