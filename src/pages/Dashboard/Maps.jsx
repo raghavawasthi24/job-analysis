@@ -29,7 +29,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Almora",
           Dist_Code: "064",
-          EmployerRate: "18",
+          EmployerRate: "18.6",
         },
         geometry: {
           type: "Polygon",
@@ -528,7 +528,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Bageshwar",
           Dist_Code: "063",
-          EmployerRate: "20",
+          EmployerRate: "11.6",
         },
         geometry: {
           type: "Polygon",
@@ -981,7 +981,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Chamoli",
           Dist_Code: "057",
-          EmployerRate: "500",
+          EmployerRate: "25.8",
         },
         geometry: {
           type: "Polygon",
@@ -1762,7 +1762,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Champawat",
           Dist_Code: "065",
-          EmployerRate: "70",
+          EmployerRate: "20.4",
         },
         geometry: {
           type: "Polygon",
@@ -2241,7 +2241,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Dehradun",
           Dist_Code: "060",
-          EmployerRate: "90",
+          EmployerRate: "23.9",
         },
         geometry: {
           type: "Polygon",
@@ -3153,9 +3153,9 @@ const Maps = () => {
           Country: "India",
           State_Name: "Uttarakhand",
           State_Code: "05",
-          Dist_Name: "Hardwar",
+          Dist_Name: "Haridwar",
           Dist_Code: "068",
-          EmployerRate: "100",
+          EmployerRate: "34.6",
         },
         geometry: {
           type: "Polygon",
@@ -3630,7 +3630,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Nainital",
           Dist_Code: "066",
-          EmployerRate: "120",
+          EmployerRate: "21.5",
         },
         geometry: {
           type: "Polygon",
@@ -4125,7 +4125,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Garhwal",
           Dist_Code: "061",
-          EmployerRate: "150",
+          EmployerRate: "14.4",
         },
         geometry: {
           type: "Polygon",
@@ -4668,7 +4668,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Pithoragarh",
           Dist_Code: "062",
-          EmployerRate: "210",
+          EmployerRate: "17.8",
         },
         geometry: {
           type: "Polygon",
@@ -5870,7 +5870,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Rudraprayag",
           Dist_Code: "058",
-          EmployerRate: "105",
+          EmployerRate: "12.7",
         },
         geometry: {
           type: "Polygon",
@@ -6172,7 +6172,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Tehri Garhwal",
           Dist_Code: "059",
-          EmployerRate: "102",
+          EmployerRate: "14.4",
         },
         geometry: {
           type: "Polygon",
@@ -6987,7 +6987,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Udham Singh Nagar",
           Dist_Code: "067",
-          EmployerRate: "108",
+          EmployerRate: "34.4",
         },
         geometry: {
           type: "Polygon",
@@ -7620,7 +7620,7 @@ const Maps = () => {
           State_Code: "05",
           Dist_Name: "Uttarkashi",
           Dist_Code: "056",
-          EmployerRate: "190",
+          EmployerRate: "22.2",
         },
         geometry: {
           type: "Polygon",
@@ -8666,17 +8666,17 @@ const Maps = () => {
   const getColor = (density) => {
     return density > 1000
       ? "#800026"
-      : density > 500
-      ? "#BD0026"
-      : density > 200
-      ? "#E31A1C"
-      : density > 100
-      ? "#FC4E2A"
       : density > 50
-      ? "#FD8D3C"
+      ? "#BD0026"
+      : density > 25
+      ? "#E31A1C"
       : density > 20
-      ? "#FEB24C"
+      ? "#FC4E2A"
+      : density > 15
+      ? "#FD8D3C"
       : density > 10
+      ? "#FEB24C"
+      : density > 5
       ? "#FED976"
       : "#FFEDA0";
   };
