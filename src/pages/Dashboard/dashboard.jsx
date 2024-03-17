@@ -32,9 +32,10 @@ export default function Dashboard() {
   useEffect(() => {
     // Filter data based on sector
     console.log(ctg);
-    const filtered = jobdata.filter((job) => job.sector == ctg || ctg == "All");
+    const filtered = jobdata.filter(job => job.sector === ctg || ctg === "All");
     setFilteredData(filtered);
-  }, [jobdata]);
+  }, [jobdata, ctg]);
+  
 
   useEffect(() => {
     if (ctg == "All") {
@@ -81,7 +82,7 @@ export default function Dashboard() {
             <Charts data={data} />
           </div>
           <div className="w-1/3 overflow-auto">
-            <Jobs data={filteredData ? filteredData : jobdata} />
+            <Jobs data={filteredData} />
           </div>
         </div>
         <div className="mt-5 rounded-lg">
