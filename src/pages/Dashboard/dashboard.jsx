@@ -20,6 +20,7 @@ export default function Dashboard() {
       .get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
       .then((res) => {
         setJobData(res.data);
+        console.log(res.data);
         // setLoading(false);
       })
       .catch((err) => {
@@ -30,9 +31,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Filter data based on sector
-    const filtered = jobdata.filter((job) => job.sector === ctg || ctg === "");
+    console.log(ctg);
+    const filtered = jobdata.filter((job) => job.sector == ctg || ctg == "All");
     setFilteredData(filtered);
-  }, [data]);
+  }, [jobdata]);
 
   useEffect(() => {
     if (ctg == "All") {
@@ -68,14 +70,18 @@ export default function Dashboard() {
       <div className="flex-1 flex-col h-screen overflow-auto p-6 bg-gray-50">
         <Categories setCtg={setCtg} ctg={ctg} />
         <div className="flex gap-4 mt-5 w-full overflow-auto damm">
-          {ctg ? roles?.map((role, key) => <Button>{role}</Button>) : null}
+          {ctg
+            ? roles?.map((role, key) => (
+                <Button variant="outline">{role}</Button>
+              ))
+            : null}
         </div>
         <div className="flex gap-4">
           <div className="flex flex-col w-2/3">
             <Charts data={data} />
           </div>
           <div className="w-1/3 overflow-auto">
-            <Jobs data={filteredData} />
+            <Jobs data={filteredData ? filteredData : jobdata} />
           </div>
         </div>
         <div className="mt-5 rounded-lg">
