@@ -5,7 +5,7 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { ImPriceTags } from "react-icons/im";
 import { TiHomeOutline } from "react-icons/ti";
-
+import { IoAnalytics } from "react-icons/io5";
 
 export default function Sidebar() {
   const [hovered, setHovered] = useState(true);
@@ -26,18 +26,17 @@ export default function Sidebar() {
                 location.pathname === "/" && "bg-blue-100 text-black border-l-2"
               }`}
             >
-              <TiHomeOutline
-                className={`${hovered && "mr-2"} h-5 w-5`}
-              />
+              <TiHomeOutline className={`${hovered && "mr-2"} h-5 w-5`} />
               {hovered && "Home"}
             </Button>
           </Link>
-          <Link to="/">
+          <Link to="/dashboard">
             <Button
               variant="ghost"
               size={hovered ? "default" : "icon"}
               className={`${hovered && "justify-start w-full"} ${
-                location.pathname === "/dashboard" && "bg-blue-100 text-black border-l-2"
+                location.pathname === "/dashboard" &&
+                "bg-blue-100 text-black border-l-2"
               }`}
             >
               <MdDashboardCustomize
@@ -69,6 +68,19 @@ export default function Sidebar() {
             >
               <CgProfile className={`${hovered && "mr-2"} h-5 w-5`} />
               {hovered && "Accounts"}
+            </Button>
+          </Link>
+          <Link to="/analysis">
+            <Button
+              variant="ghost"
+              size={hovered ? "default" : "icon"}
+              className={`${hovered && "justify-start w-full"} ${
+                location.pathname === "/analysis" &&
+                "bg-blue-100 text-black border-l-2"
+              }`}
+            >
+              <IoAnalytics className={`${hovered && "mr-2"} h-5 w-5`} />
+              {hovered && "Analysis"}
             </Button>
           </Link>
         </div>

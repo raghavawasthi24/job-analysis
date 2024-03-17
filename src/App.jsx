@@ -5,6 +5,7 @@ import "./i18n";
 import Dashboard from "./pages/Dashboard/dashboard";
 import Maps from "./pages/Dashboard/Maps";
 import Home from "./pages/Home/Home";
+import Analysis from "./pages/Analysis";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="Maps" element={<Maps />} />
+        <Route path="/analysis" element={<Analysis />} />
       </Routes>
     </BrowserRouter>
   );
