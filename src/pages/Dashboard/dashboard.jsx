@@ -19,6 +19,7 @@ export default function Dashboard() {
     axios.get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
       .then((res) => {
         setJobData(res.data);
+        console.log(res.data);
         // setLoading(false);
       })
       .catch((err) => {
@@ -29,9 +30,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Filter data based on sector
-    const filtered = jobdata.filter(job => job.sector === ctg || ctg === "");
+    console.log(ctg)
+    const filtered = jobdata.filter(job => job.sector == ctg || ctg == "All");
     setFilteredData(filtered);
-  }, [data]);
+  }, [jobdata]);
 
   useEffect(() => {
     if(ctg=="All"){
@@ -77,7 +79,7 @@ export default function Dashboard() {
             <Charts data={data} />
           </div>
           <div className="w-1/3 overflow-auto">
-            <Jobs data={filteredData} />
+            <Jobs data={filteredData? filteredData : jobdata} />
           </div>
         </div>
         <div className="mt-5 rounded-lg">

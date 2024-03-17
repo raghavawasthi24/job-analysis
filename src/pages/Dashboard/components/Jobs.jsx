@@ -8,7 +8,7 @@ export default function Jobs({data}) {
   // if (loading) {
   //   return <div>Loading...</div>;
   // }
-    console.log(data)
+    
 
 
   return (
