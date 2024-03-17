@@ -11,6 +11,28 @@ import { Button } from "../../components/ui/button";
 export default function Dashboard() {
   const [ctg, setCtg] = useState("All");
   const [data, setData] = useState(null);
+  const [jobdata, setJobData] = useState([]);
+  const [filteredData, setFilteredData] = useState([])
+  // const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
+      .then((res) => {
+        setJobData(res.data);
+        // setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        // setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Filter data based on sector
+    const filtered = jobdata.filter(job => job.sector === ctg || ctg === "");
+    setFilteredData(filtered);
+  }, [data]);
+
   useEffect(() => {
     if(ctg=="All"){
        axios
@@ -38,6 +60,7 @@ export default function Dashboard() {
     }
    
   }, [ctg]);
+  
 
   const roles = data?.role_count && Object.keys(data.role_count);
 
@@ -54,7 +77,7 @@ export default function Dashboard() {
             <Charts data={data} />
           </div>
           <div className="w-1/3 overflow-auto">
-            <Jobs />
+            <Jobs data={filteredData} />
           </div>
         </div>
         <div className="mt-5 rounded-lg">

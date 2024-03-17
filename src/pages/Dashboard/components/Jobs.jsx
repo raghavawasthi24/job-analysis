@@ -3,26 +3,13 @@ import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
 import axios from "axios";
 
-export default function Jobs() {
-  const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios.get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
-      .then((res) => {
-        setData(res.data);
-        console.log(res.data);
-        // setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        // setLoading(false);
-      });
-  }, []);
-
+export default function Jobs({data}) {
+  
   // if (loading) {
   //   return <div>Loading...</div>;
   // }
+    console.log(data)
+
 
   return (
     <div className="bg-white mt-5 rounded-lg p-2 gap-4 h-[58rem] overflow-auto">
