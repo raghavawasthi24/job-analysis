@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
+import axios from "axios";
 
 export default function Jobs() {
-  const skills = ["C++", "C", "Java", "HTML", "C++", "C", "Java", "HTML"];
+  const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("https://dqct2msz-8000.inc1.devtunnels.ms/classify/jobs")
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+        // setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        // setLoading(false);
+      });
+  }, []);
+
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
   return (
-    <div className="bg-white mt-5 rounded-lg p-2 gap-4 h-[50rem] overflow-auto">
+    <div className="bg-white mt-5 rounded-lg p-2 gap-4 h-[58rem] overflow-auto">
       <p className="font-medium p-4">Browse Jobs</p>
-      {skills.map((skill, key) => (
-        <div className="p-4 grid gap-4 shadow-sm">
-          <p className="font-medium text-lg">Teaching</p>
+      {data.map((subdata, index) => (
+        <div className="p-4 grid gap-4 shadow-sm" key={index}>
+          <p className="font-medium text-lg">{subdata.role}</p>
           <div className="flex gap-2 flex-wrap">
-            {skills.map((skill, key) => (
-              <Badge className="bg-gray-100 text-black">{skill}</Badge>
+            {subdata.skills.map((skill, key) => (
+              <Badge key={key} className="bg-gray-100 text-black">{skill}</Badge>
             ))}
           </div>
-          <Button className="w-fit self-end bg-blue-500">Apply Now</Button>
+          <a href={subdata.link} target="_blank" rel="noopener noreferrer">
+            <Button className="w-fit self-end bg-blue-500">Apply Now</Button>
+          </a>
         </div>
       ))}
     </div>
