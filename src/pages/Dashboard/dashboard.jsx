@@ -6,6 +6,7 @@ import { Chart } from "chart.js";
 import Maps from "./Maps";
 import Jobs from "./components/Jobs";
 import axios from "axios";
+import { Button } from "../../components/ui/button";
 
 export default function Dashboard() {
   const [ctg, setCtg] = useState("");
@@ -24,14 +25,19 @@ export default function Dashboard() {
       });
   }, [ctg]);
 
+  const roles = data?.role_count && Object.keys(data.role_count);
+
   return (
     <div className="flex">
       <Sidebar />
       <div className="flex-1 flex-col h-screen overflow-auto p-6 bg-gray-50">
         <Categories setCtg={setCtg} />
+        <div className="flex gap-4 mt-5 w-full overflow-auto">
+          {ctg ? roles?.map((role, key) => <Button>{role}</Button>) : null}
+        </div>
         <div className="flex gap-4">
           <div className="flex flex-col w-2/3">
-            <Charts data={data}/>
+            <Charts data={data} />
           </div>
           <div className="w-1/3 overflow-auto">
             <Jobs />

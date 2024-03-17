@@ -1,111 +1,67 @@
-import { Button } from "./ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { FaRegBell } from "react-icons/fa";
-import { BsPlusCircle } from "react-icons/bs";
-import { CiGlobe } from "react-icons/ci";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { CgProfile } from "react-icons/cg";
-import { RiMotorbikeFill } from "react-icons/ri";
-import { MdPayment } from "react-icons/md";
-import { IoIosSettings } from "react-icons/io";
-import { FiLogOut } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
-export default function Navbar() {
-  const loggedin = true;
-  const ProfileMenu = [
-    {
-      name: "My Profile",
-      icon: <CgProfile className="w-4 h-4 mr-2" />,
-      link: "/profile",
-    },
-    {
-      name: "My Rides",
-      icon: <RiMotorbikeFill className="w-4 h-4 mr-2" />,
-      link: "/rides",
-    },
-    {
-      name: "My Payments",
-      icon: <MdPayment className="w-4 h-4 mr-2" />,
-      link: "/payments",
-    },
-    {
-      name: "Settings",
-      icon: <IoIosSettings className="w-4 h-4 mr-2" />,
-      link: "/settings",
-    },
-  ];
+export default function Header() {
+  const [state, setState] = useState(false);
+
+  useEffect(() => {
+    document.onclick = (e) => {
+      const target = e.target;
+      if (!target.closest(".menu-btn")) setState(false);
+    };
+  }, []);
+
   return (
-    <nav className="flex w-full fixed bg-white top-0 justify-between items-center px-4 py-2 z-20">
-      <p className="font-bold text-xl md:text-4xl text-[#272142]">Tantum.</p>
-      <div className="flex items-center md:gap-4">
-        <Popover>
-          <PopoverTrigger asChild>
-            <div>
-              <FaRegBell className="w-4 h-4 cursor-pointer text-[#272142]" />
-            </div>
-          </PopoverTrigger>
-          <PopoverContent className="w-80">
-            <div className="space-y-2">
-              <h4 className="font-medium leading-none">Dimensions</h4>
-              <p className="text-sm text-muted-foreground">
-                Set the dimensions for the layer.
-              </p>
-            </div>
-          </PopoverContent>
-        </Popover>
-        <Button
-          variant="outline"
-          className="bg-white sm:border sm:border-[#272142] rounded-full"
+    <header className="sticky inset-0 z-50 border-slate-100 backdrop-blur-lg">
+      <nav className="mx-auto flex justify-between max-w-6xl gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4">
+        <div className="relative flex items-center">
+          <a href="/" className="text-gray-700 font-bold">
+            UniCraft
+          </a>
+        </div>
+        <ul
+          className={` ${
+            state ? "block" : "hidden"
+          } items-center justify-center gap-6 md:flex`}
         >
-          <BsPlusCircle className="w-4 h-4 sm:mr-2" />
-          <span className="hidden sm:block">Publish a ride</span>
-        </Button>
-        {/* condition to check whether logged In or not */}
-        {/* displays signin when loggged out otherwise profile options */}
-        {loggedin ? (
-          <Sheet>
-            <SheetTrigger asChild>
-              <Avatar className="cursor-pointer">
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </SheetTrigger>
-            <SheetContent className="w-[300px] pt-12 flex flex-col justify-between">
-              <div>
-                {ProfileMenu.map((menu, key) => (
-                  <Link
-                    to={`${menu.link}`}
-                    className="flex items-center text-[#4e4d4f] text-md font-medium  hover:bg-[#F3F3F3] p-2 rounded-lg cursor-pointer"
-                  >
-                    {menu.icon}
-                    {menu.name}
-                  </Link>
-                ))}
-              </div>
-              <Link
-                to="/logout"
-                className="flex items-center text-white bg-red-600 text-md font-medium p-2 rounded-lg cursor-pointer"
-              >
-                <FiLogOut className="w-4 h-4 mr-2" />
-                Logout
-              </Link>
-            </SheetContent>
-          </Sheet>
-        ) : (
-          <Button
-            size="sm"
-            className="flex items-center font-semibold bg-[#272142]"
+          <li className="pt-1.5 font-dm text-sm font-medium text-slate-700">
+            <a href="#">How it works</a>
+          </li>
+          <li className="pt-1.5 font-dm text-sm font-medium text-slate-700">
+            <a href="#">Pricing</a>
+          </li>
+          <li className="pt-1.5 font-dm text-sm font-medium text-slate-700">
+            <a href="#">FAQ</a>
+          </li>
+        </ul>
+        <div className="hidden items-center justify-center gap-6 md:flex">
+          <a
+            href=""
+            className="block border border-gray-600 rounded-md px-8 py-2 text-sm font-semibold text-gray-600 text-center"
           >
-            <CiGlobe className="w-4 h-4 mr-2" />
-            Sign In
-          </Button>
-        )}
-      </div>
-    </nav>
+            Contact us
+          </a>
+        </div>
+        <div className="relative flex items-center justify-center md:hidden">
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+              className="h-6 w-auto text-slate-900"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
   );
 }

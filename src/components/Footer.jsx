@@ -1,46 +1,35 @@
-import React from 'react';
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import React from "react";
+import icon1 from "../assests/icon1.png";
+import icon2 from "../assests/icon2.png";
+import icon3 from "../assests/icon3.png";
+import icon4 from "../assests/icon4.png";
+import icon5 from "../assests/icon5.png";
+import icon6 from "../assests/icon6.png";
 
 export default function Footer() {
+  const icons = [icon1, icon2, icon3, icon4, icon5, icon6];
   return (
-    <div className="text-white">
-      <div className="border-b flex gap-28 justify-between p-10">
-        <div className="w-1/2 grid gap-2">
-          <p className="text-4xl font-bold">Tantum</p>
-          <p>
-            Book or share your ride with Tantum. Easily connect with partner,
-            share your live location, call or text a meassage.
-          </p>
-        </div>
-        <div className="w-1/2 text-right grid gap-2">
-          <p className="font-bold">Disclaimer</p>
-          <p>
-            Our carpooling website facilitates connections between users for
-            shared rides. While we strive for a safe and positive experience,
-            users are responsible for their interactions and arrangements.
-            Please exercise caution and adhere to local laws and guidelines when
-            participating in shared rides. We are not liable for any incidents
-            or disputes that may arise between users. By using our platform, you
-            agree to our terms and conditions. Safe travels!
+    <footer className="flex flex-col p-10 gap-5 border-t text-gray-600 body-font">
+      <div className="flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <div className="flex-shrink-0 md:mx-0 md:text-left md:mt-0 mt-10">
+          <p className="text-2xl font-bold">UniCraft</p>
+
+          <p className="w-auto md:w-[350px]">
+            Design amazing digital experiences that create more happy in the
+            world.
           </p>
         </div>
       </div>
-      <div className="flex justify-between p-10">
-        <div className="flex gap-8">
-          <a href="">
-            <FaGithub className="w-8 h-8" />
-          </a>
-          <a href="">
-            <FaLinkedin className="w-8 h-8" />
-          </a>
-        </div>
-        <div className="flex gap-2">
-          <p>&copy; 2024 All rights reserved.</p>
-          <img src="assets/india-flag.webp" alt="" className="h-6" />
-          <p>India</p>
-        </div>
+      <div className="flex justify-between gap-6">
+        <p className="text-gray-500 text-sm w-[150px] md:w-auto">
+          © {new Date().getFullYear()} Untitled UI. All rights reserved.
+        </p>
+        {/* <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">
+          {icons.map((icon, index) => {
+            return <img src={icon} alt="" className="w-4 h-4 sm:w-6 sm:h-6" key={index} />;
+          })}
+        </div> */}
       </div>
-    </div>
+    </footer>
   );
 }

@@ -8,42 +8,10 @@ Chart.register(CategoryScale, LinearScale);
 export default function Charts({ data }) {
   const [roleData, setRoleData] = useState(null);
   const [skillData, setSkillData] = useState(null);
-  const Data = [
-    {
-      id: 1,
-      year: 2016,
-      userGain: 80000,
-      userLost: 823,
-    },
-    {
-      id: 2,
-      year: 2017,
-      userGain: 45677,
-      userLost: 345,
-    },
-    {
-      id: 3,
-      year: 2018,
-      userGain: 78888,
-      userLost: 555,
-    },
-    {
-      id: 4,
-      year: 2019,
-      userGain: 90000,
-      userLost: 4555,
-    },
-    {
-      id: 5,
-      year: 2020,
-      userGain: 4300,
-      userLost: 234,
-    },
-  ];
+  const [sortRoles, setSortRoles] = useState(null);
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       const labels = Object.entries(data.role_count).map(
         ([category, count]) => category
       );
@@ -51,7 +19,6 @@ export default function Charts({ data }) {
         ([category, count]) => count
       );
 
-      console.log(labels, counts);
       const datas = {
         labels: labels,
         datasets: [
@@ -72,19 +39,15 @@ export default function Charts({ data }) {
 
       setRoleData(datas);
 
-      const labelss = Object.entries(data.skill_count).map(
-        ([category, count]) => category
-      );
-      const countss = Object.entries(data.skill_count).map(
-        ([category, count]) => count
-      );
-
-      console.log(labels, counts);
+      const skillEntries = Object.entries(data.skill_count);
+      const skill_count = skillEntries?.slice(0, 10);
+      const labelss = skill_count.map((category) => category[0]);
+      const countss = skill_count.map((count) => count[1]);
       const datass = {
         labels: labelss,
         datasets: [
           {
-            label: "Sectors",
+            label: "Count",
             data: countss,
             backgroundColor: [
               "rgba(75,192,192,1)",
@@ -99,10 +62,37 @@ export default function Charts({ data }) {
       };
 
       setSkillData(datass);
+
+      const skillEntriess = Object.entries(data.role_count);
+      const sortedSkills = skillEntries.sort((a, b) => b[1] - a[1]);
+      const top10Skills = sortedSkills.slice(0, 10);
+      console.log(top10Skills);
+      const labelsss = top10Skills.map((category) => category[0]);
+      const countsss = top10Skills.map((count) => count[1]);
+      const datasss = {
+        labels: labelsss,
+        datasets: [
+          {
+            label: "Count",
+            data: countsss,
+            backgroundColor: [
+              "rgba(75,192,192,1)",
+              "#ecf0f1",
+              "#50AF95",
+              "#f3ba2f",
+              "#2a71d0",
+              "#ff6384",
+              "#36a2eb",
+              "#ffce56",
+            ],
+            borderWidth: 2,
+          },
+        ],
+      };
+
+      setSortRoles(datasss);
     }
   }, [data]);
-
-  // Add Data and chartData as dependencies to useEffect
 
   return (
     <div className="flex flex-col gap-4 mt-5">
@@ -144,7 +134,7 @@ export default function Charts({ data }) {
         <div className="w-full bg-white rounded-lg px-4 py-6">
           <p className="font-medium">Trending Skills in Various Jobs</p>
           {skillData && (
-            <Line
+            <Doughnut
               data={skillData}
               options={{
                 plugins: {
@@ -159,27 +149,15 @@ export default function Charts({ data }) {
                     },
                   },
                 },
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    grid: {
-                      display: false,
-                    },
-                  },
-                },
               }}
             />
           )}
         </div>
-        {/* <div className=" bg-white rounded-lg px-4 py-6">
-          <p className="font-medium">Graph 3</p>
-          {roleData && (
-            <Line
-              data={roleData}
+        <div className=" bg-white rounded-lg px-4 py-6">
+          <p className="font-medium">Trending Jobs</p>
+          {sortRoles && (
+            <Doughnut
+              data={sortRoles}
               options={{
                 plugins: {
                   legend: {
@@ -193,22 +171,10 @@ export default function Charts({ data }) {
                     },
                   },
                 },
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    grid: {
-                      display: false,
-                    },
-                  },
-                },
               }}
             />
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   );
