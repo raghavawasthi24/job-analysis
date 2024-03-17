@@ -8711,7 +8711,8 @@ const Maps = () => {
         style={style}
         onEachFeature={(feature, layer) => {
           layer.bindPopup(
-            `District Name:${feature.properties.Dist_Name} Unemployed: ${feature.properties.EmployerRate}`
+            `District Name:${feature.properties.Dist_Name}
+             Unemployed: ${feature.properties.EmployerRate}`
           );
         }}
       />

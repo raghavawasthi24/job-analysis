@@ -9,6 +9,7 @@ import axios from "axios";
 
 export default function Dashboard() {
   const [ctg, setCtg] = useState("");
+  const [data, setData] = useState(null);
   useEffect(() => {
     console.log(ctg);
     axios
@@ -16,7 +17,7 @@ export default function Dashboard() {
         sector: ctg,
       })
       .then((res) => {
-        console.log(res.data);
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -30,7 +31,7 @@ export default function Dashboard() {
         <Categories setCtg={setCtg} />
         <div className="flex gap-4">
           <div className="flex flex-col w-2/3">
-            <Charts />
+            <Charts data={data}/>
           </div>
           <div className="w-1/3 overflow-auto">
             <Jobs />
